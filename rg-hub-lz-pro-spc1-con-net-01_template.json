@@ -1,0 +1,950 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "applicationGateways_apg_hub_lz_pro_spc1_net_01_name": {
+      "defaultValue": "apg-hub-lz-pro-spc1-net-01",
+      "type": "String"
+    },
+    "networkSecurityGroups_nsg_spc1_pro_console_01_externalid": {
+      "defaultValue": "/subscriptions/300f5304-aee3-4ad6-9916-8c62d857f525/resourceGroups/rg-hub-lz-pro-spc1-con-sec-01/providers/Microsoft.Network/networkSecurityGroups/nsg-spc1-pro-console-01",
+      "type": "String"
+    },
+    "privateDnsZones_privatelink_vaultcore_azure_net_externalid": {
+      "defaultValue": "/subscriptions/300f5304-aee3-4ad6-9916-8c62d857f525/resourceGroups/rg-hub-lz-pro-spc1-con-dns-01/providers/Microsoft.Network/privateDnsZones/privatelink.vaultcore.azure.net",
+      "type": "String"
+    },
+    "privateEndpoints_pe_kv_hub_lz_pro_spc1_01_name": {
+      "defaultValue": "pe-kv-hub-lz-pro-spc1-01",
+      "type": "String"
+    },
+    "publicIPAddresses_pip_hub_lz_pro_spc1_apg_01_name": {
+      "defaultValue": "pip-hub-lz-pro-spc1-apg-01",
+      "type": "String"
+    },
+    "publicIPAddresses_pip_hub_lz_pro_spc1_bas_01_name": {
+      "defaultValue": "pip-hub-lz-pro-spc1-bas-01",
+      "type": "String"
+    },
+    "publicIPAddresses_pip_hub_lz_pro_spc1_forti_01_name": {
+      "defaultValue": "pip-hub-lz-pro-spc1-forti-01",
+      "type": "String"
+    },
+    "vaults_kv_hub_lz_pro_spc1_01_name": {
+      "defaultValue": "kv-hub-lz-pro-spc1-01",
+      "type": "String"
+    },
+    "virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name": {
+      "defaultValue": "vnet-hub-lz-pro-spc1-con-01",
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2024-12-01-preview",
+      "location": "spaincentral",
+      "name": "[parameters('vaults_kv_hub_lz_pro_spc1_01_name')]",
+      "properties": {
+        "accessPolicies": [
+          {
+            "objectId": "2d633166-69a7-402b-b10d-05ba6d97d851",
+            "permissions": {
+              "certificates": [
+                "Backup",
+                "Create",
+                "Delete",
+                "DeleteIssuers",
+                "Get",
+                "GetIssuers",
+                "Import",
+                "List",
+                "ListIssuers",
+                "ManageContacts",
+                "ManageIssuers",
+                "Purge",
+                "Recover",
+                "Restore",
+                "SetIssuers",
+                "Update"
+              ],
+              "keys": [
+                "Get",
+                "List",
+                "Update",
+                "Create",
+                "Import",
+                "Delete",
+                "Recover",
+                "Backup",
+                "Restore",
+                "GetRotationPolicy",
+                "SetRotationPolicy",
+                "Rotate",
+                "Encrypt",
+                "Decrypt",
+                "UnwrapKey",
+                "WrapKey",
+                "Verify",
+                "Sign",
+                "Purge",
+                "Release"
+              ],
+              "secrets": [
+                "Get",
+                "List",
+                "Set",
+                "Delete",
+                "Recover",
+                "Backup",
+                "Restore",
+                "Purge"
+              ],
+              "storage": [
+                "Get",
+                "List",
+                "Update",
+                "Delete"
+              ]
+            },
+            "tenantId": "bab5b22c-d82b-452e-9cad-04f9708f4bbd"
+          },
+          {
+            "objectId": "3a75dff9-21ef-4917-9639-135dc643c95b",
+            "permissions": {
+              "certificates": [
+                "Backup",
+                "Create",
+                "Delete",
+                "DeleteIssuers",
+                "Get",
+                "GetIssuers",
+                "Import",
+                "List",
+                "ListIssuers",
+                "ManageContacts",
+                "ManageIssuers",
+                "Purge",
+                "Recover",
+                "Restore",
+                "SetIssuers",
+                "Update"
+              ],
+              "keys": [
+                "Get",
+                "List",
+                "Update",
+                "Create",
+                "Import",
+                "Delete",
+                "Recover",
+                "Backup",
+                "Restore",
+                "GetRotationPolicy",
+                "SetRotationPolicy",
+                "Rotate",
+                "Encrypt",
+                "Decrypt",
+                "UnwrapKey",
+                "WrapKey",
+                "Verify",
+                "Sign",
+                "Purge",
+                "Release"
+              ],
+              "secrets": [
+                "Get",
+                "List",
+                "Set",
+                "Delete",
+                "Recover",
+                "Backup",
+                "Restore",
+                "Purge"
+              ],
+              "storage": [
+                "Get",
+                "List",
+                "Update",
+                "Delete"
+              ]
+            },
+            "tenantId": "bab5b22c-d82b-452e-9cad-04f9708f4bbd"
+          }
+        ],
+        "enablePurgeProtection": true,
+        "enableRbacAuthorization": false,
+        "enableSoftDelete": true,
+        "enabledForDeployment": false,
+        "enabledForDiskEncryption": false,
+        "enabledForTemplateDeployment": false,
+        "networkAcls": {
+          "bypass": "AzureServices",
+          "defaultAction": "Deny",
+          "ipRules": [
+            {
+              "value": "88.0.196.162/32"
+            }
+          ],
+          "virtualNetworkRules": []
+        },
+        "provisioningState": "Succeeded",
+        "publicNetworkAccess": "Enabled",
+        "sku": {
+          "family": "A",
+          "name": "standard"
+        },
+        "softDeleteRetentionInDays": 7,
+        "tenantId": "bab5b22c-d82b-452e-9cad-04f9708f4bbd",
+        "vaultUri": "[concat('https://', parameters('vaults_kv_hub_lz_pro_spc1_01_name'), '.vault.azure.net/')]"
+      },
+      "tags": {
+        "application_criticality": "",
+        "application_name": "",
+        "application_owner": "",
+        "backup_policy": "",
+        "bussines_criticality": "",
+        "company_charge": "",
+        "data_classification": "",
+        "disaster_recovery": "",
+        "maintenance_windows": "",
+        "service_charge": "",
+        "support_team": "",
+        "update_manager": ""
+      },
+      "type": "Microsoft.KeyVault/vaults"
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "location": "spaincentral",
+      "name": "[parameters('publicIPAddresses_pip_hub_lz_pro_spc1_apg_01_name')]",
+      "properties": {
+        "ddosSettings": {
+          "protectionMode": "VirtualNetworkInherited"
+        },
+        "idleTimeoutInMinutes": 4,
+        "ipAddress": "68.221.247.143",
+        "ipTags": [],
+        "publicIPAddressVersion": "IPv4",
+        "publicIPAllocationMethod": "Static"
+      },
+      "sku": {
+        "name": "Standard",
+        "tier": "Regional"
+      },
+      "type": "Microsoft.Network/publicIPAddresses",
+      "zones": [
+        "2",
+        "3",
+        "1"
+      ]
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "location": "spaincentral",
+      "name": "[parameters('publicIPAddresses_pip_hub_lz_pro_spc1_bas_01_name')]",
+      "properties": {
+        "ddosSettings": {
+          "protectionMode": "VirtualNetworkInherited"
+        },
+        "idleTimeoutInMinutes": 4,
+        "ipAddress": "68.221.229.204",
+        "ipTags": [],
+        "publicIPAddressVersion": "IPv4",
+        "publicIPAllocationMethod": "Static"
+      },
+      "sku": {
+        "name": "Standard",
+        "tier": "Regional"
+      },
+      "type": "Microsoft.Network/publicIPAddresses",
+      "zones": [
+        "2",
+        "3",
+        "1"
+      ]
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "location": "spaincentral",
+      "name": "[parameters('publicIPAddresses_pip_hub_lz_pro_spc1_forti_01_name')]",
+      "properties": {
+        "ddosSettings": {
+          "protectionMode": "VirtualNetworkInherited"
+        },
+        "idleTimeoutInMinutes": 4,
+        "ipAddress": "68.221.246.149",
+        "ipTags": [],
+        "publicIPAddressVersion": "IPv4",
+        "publicIPAllocationMethod": "Static"
+      },
+      "sku": {
+        "name": "Standard",
+        "tier": "Regional"
+      },
+      "type": "Microsoft.Network/publicIPAddresses",
+      "zones": [
+        "2",
+        "3",
+        "1"
+      ]
+    },
+    {
+      "apiVersion": "2024-12-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_kv_hub_lz_pro_spc1_01_name'))]"
+      ],
+      "location": "spaincentral",
+      "name": "[concat(parameters('vaults_kv_hub_lz_pro_spc1_01_name'), '/psc-', parameters('vaults_kv_hub_lz_pro_spc1_01_name'))]",
+      "properties": {
+        "privateEndpoint": {},
+        "privateLinkServiceConnectionState": {
+          "actionsRequired": "None",
+          "status": "Approved"
+        },
+        "provisioningState": "Succeeded"
+      },
+      "type": "Microsoft.KeyVault/vaults/privateEndpointConnections"
+    },
+    {
+      "apiVersion": "2024-12-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_kv_hub_lz_pro_spc1_01_name'))]"
+      ],
+      "location": "spaincentral",
+      "name": "[concat(parameters('vaults_kv_hub_lz_pro_spc1_01_name'), '/vm-hub-lz-pro-spc1-fortimanager-01-pass')]",
+      "properties": {
+        "attributes": {
+          "enabled": true
+        },
+        "contentType": "vm-hub-lz-pro-spc1-fortimanager-01-pass"
+      },
+      "tags": {
+        "application_criticality": "",
+        "application_name": "",
+        "application_owner": "",
+        "backup_policy": "",
+        "bussines_criticality": "",
+        "company_charge": "",
+        "data_classification": "",
+        "disaster_recovery": "",
+        "maintenance_windows": "",
+        "service_charge": "",
+        "support_team": "",
+        "update_manager": ""
+      },
+      "type": "Microsoft.KeyVault/vaults/secrets"
+    },
+    {
+      "apiVersion": "2024-12-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_kv_hub_lz_pro_spc1_01_name'))]"
+      ],
+      "location": "spaincentral",
+      "name": "[concat(parameters('vaults_kv_hub_lz_pro_spc1_01_name'), '/vm-hub-lz-pro-spc1-fw-01-pass')]",
+      "properties": {
+        "attributes": {
+          "enabled": true
+        },
+        "contentType": "vm-hub-lz-pro-spc1-fw-01-pass"
+      },
+      "tags": {
+        "application_criticality": "",
+        "application_name": "",
+        "application_owner": "",
+        "backup_policy": "",
+        "bussines_criticality": "",
+        "company_charge": "",
+        "data_classification": "",
+        "disaster_recovery": "",
+        "maintenance_windows": "",
+        "service_charge": "",
+        "support_team": "",
+        "update_manager": ""
+      },
+      "type": "Microsoft.KeyVault/vaults/secrets"
+    },
+    {
+      "apiVersion": "2024-12-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_kv_hub_lz_pro_spc1_01_name'))]"
+      ],
+      "location": "spaincentral",
+      "name": "[concat(parameters('vaults_kv_hub_lz_pro_spc1_01_name'), '/vm-hub-lz-pro-spc1-fw-02-pass')]",
+      "properties": {
+        "attributes": {
+          "enabled": true
+        },
+        "contentType": "vm-hub-lz-pro-spc1-fw-02-pass"
+      },
+      "tags": {
+        "application_criticality": "",
+        "application_name": "",
+        "application_owner": "",
+        "backup_policy": "",
+        "bussines_criticality": "",
+        "company_charge": "",
+        "data_classification": "",
+        "disaster_recovery": "",
+        "maintenance_windows": "",
+        "service_charge": "",
+        "support_team": "",
+        "update_manager": ""
+      },
+      "type": "Microsoft.KeyVault/vaults/secrets"
+    },
+    {
+      "apiVersion": "2024-12-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_kv_hub_lz_pro_spc1_01_name'))]"
+      ],
+      "location": "spaincentral",
+      "name": "[concat(parameters('vaults_kv_hub_lz_pro_spc1_01_name'), '/vm-hub-lz-pro-spc1-jumhost-01-pass')]",
+      "properties": {
+        "attributes": {
+          "enabled": true
+        },
+        "contentType": "vm-hub-lz-pro-spc1-jumhost-01-pass"
+      },
+      "tags": {
+        "application_criticality": "",
+        "application_name": "",
+        "application_owner": "",
+        "backup_policy": "",
+        "bussines_criticality": "",
+        "company_charge": "",
+        "data_classification": "",
+        "disaster_recovery": "",
+        "maintenance_windows": "",
+        "service_charge": "",
+        "support_team": "",
+        "update_manager": ""
+      },
+      "type": "Microsoft.KeyVault/vaults/secrets"
+    },
+    {
+      "apiVersion": "2024-12-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_kv_hub_lz_pro_spc1_01_name'))]"
+      ],
+      "location": "spaincentral",
+      "name": "[concat(parameters('vaults_kv_hub_lz_pro_spc1_01_name'), '/vm-hub-lz-pro-spc1-netskope-01-pass')]",
+      "properties": {
+        "attributes": {
+          "enabled": true
+        },
+        "contentType": "vm-hub-lz-pro-spc1-netskope-01-pass"
+      },
+      "tags": {
+        "application_criticality": "",
+        "application_name": "",
+        "application_owner": "",
+        "backup_policy": "",
+        "bussines_criticality": "",
+        "company_charge": "",
+        "data_classification": "",
+        "disaster_recovery": "",
+        "maintenance_windows": "",
+        "service_charge": "",
+        "support_team": "",
+        "update_manager": ""
+      },
+      "type": "Microsoft.KeyVault/vaults/secrets"
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/privateEndpoints', parameters('privateEndpoints_pe_kv_hub_lz_pro_spc1_01_name'))]"
+      ],
+      "name": "[concat(parameters('privateEndpoints_pe_kv_hub_lz_pro_spc1_01_name'), '/pdnszg-kv-hub-lz-pro-spc1-01')]",
+      "properties": {
+        "privateDnsZoneConfigs": [
+          {
+            "name": "privatelink.vaultcore.azure.net",
+            "properties": {
+              "privateDnsZoneId": "[parameters('privateDnsZones_privatelink_vaultcore_azure_net_externalid')]"
+            }
+          }
+        ]
+      },
+      "type": "Microsoft.Network/privateEndpoints/privateDnsZoneGroups"
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/applicationGateways', parameters('applicationGateways_apg_hub_lz_pro_spc1_net_01_name'))]"
+      ],
+      "location": "spaincentral",
+      "name": "[parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name')]",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.248.4.0/22"
+          ]
+        },
+        "dhcpOptions": {
+          "dnsServers": []
+        },
+        "enableDdosProtection": false,
+        "privateEndpointVNetPolicies": "Disabled",
+        "subnets": [
+          {
+            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'), 'snet-hub-lz-pro-con-paloalto-mng-01')]",
+            "name": "snet-hub-lz-pro-con-paloalto-mng-01",
+            "properties": {
+              "addressPrefix": "10.248.4.32/27",
+              "defaultOutboundAccess": true,
+              "delegations": [],
+              "privateEndpointNetworkPolicies": "Disabled",
+              "privateLinkServiceNetworkPolicies": "Enabled",
+              "serviceEndpoints": []
+            },
+            "type": "Microsoft.Network/virtualNetworks/subnets"
+          },
+          {
+            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'), 'snet-hub-lz-pro-con-paloalto-untrust-01')]",
+            "name": "snet-hub-lz-pro-con-paloalto-untrust-01",
+            "properties": {
+              "addressPrefix": "10.248.4.64/27",
+              "defaultOutboundAccess": true,
+              "delegations": [],
+              "privateEndpointNetworkPolicies": "Disabled",
+              "privateLinkServiceNetworkPolicies": "Enabled",
+              "serviceEndpoints": []
+            },
+            "type": "Microsoft.Network/virtualNetworks/subnets"
+          },
+          {
+            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'), 'snet-hub-lz-pro-con-paloalto-trust-01')]",
+            "name": "snet-hub-lz-pro-con-paloalto-trust-01",
+            "properties": {
+              "addressPrefix": "10.248.4.96/27",
+              "defaultOutboundAccess": true,
+              "delegations": [],
+              "privateEndpointNetworkPolicies": "Disabled",
+              "privateLinkServiceNetworkPolicies": "Enabled",
+              "serviceEndpoints": []
+            },
+            "type": "Microsoft.Network/virtualNetworks/subnets"
+          },
+          {
+            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'), 'snet-hub-lz-pro-con-apw-01')]",
+            "name": "snet-hub-lz-pro-con-apw-01",
+            "properties": {
+              "addressPrefix": "10.248.5.0/25",
+              "applicationGatewayIPConfigurations": [
+                {
+                  "id": "[concat(resourceId('Microsoft.Network/applicationGateways', parameters('applicationGateways_apg_hub_lz_pro_spc1_net_01_name')), '/gatewayIPConfigurations/my-gateway-ip-configuration')]"
+                }
+              ],
+              "defaultOutboundAccess": true,
+              "delegations": [],
+              "privateEndpointNetworkPolicies": "Disabled",
+              "privateLinkServiceNetworkPolicies": "Enabled",
+              "serviceEndpoints": []
+            },
+            "type": "Microsoft.Network/virtualNetworks/subnets"
+          },
+          {
+            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'), 'snet-hub-lz-pro-con-pep-01')]",
+            "name": "snet-hub-lz-pro-con-pep-01",
+            "properties": {
+              "addressPrefix": "10.248.4.128/27",
+              "defaultOutboundAccess": true,
+              "delegations": [],
+              "privateEndpointNetworkPolicies": "Disabled",
+              "privateLinkServiceNetworkPolicies": "Enabled",
+              "serviceEndpoints": []
+            },
+            "type": "Microsoft.Network/virtualNetworks/subnets"
+          },
+          {
+            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'), 'snet-hub-lz-pro-con-forti-mng-01')]",
+            "name": "snet-hub-lz-pro-con-forti-mng-01",
+            "properties": {
+              "addressPrefix": "10.248.4.160/27",
+              "defaultOutboundAccess": true,
+              "delegations": [],
+              "networkSecurityGroup": {
+                "id": "[parameters('networkSecurityGroups_nsg_spc1_pro_console_01_externalid')]"
+              },
+              "privateEndpointNetworkPolicies": "Disabled",
+              "privateLinkServiceNetworkPolicies": "Enabled",
+              "serviceEndpoints": []
+            },
+            "type": "Microsoft.Network/virtualNetworks/subnets"
+          },
+          {
+            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'), 'snet-hub-lz-pro-con-netskope-01')]",
+            "name": "snet-hub-lz-pro-con-netskope-01",
+            "properties": {
+              "addressPrefix": "10.248.4.192/27",
+              "defaultOutboundAccess": true,
+              "delegations": [],
+              "networkSecurityGroup": {
+                "id": "[parameters('networkSecurityGroups_nsg_spc1_pro_console_01_externalid')]"
+              },
+              "privateEndpointNetworkPolicies": "Disabled",
+              "privateLinkServiceNetworkPolicies": "Enabled",
+              "serviceEndpoints": []
+            },
+            "type": "Microsoft.Network/virtualNetworks/subnets"
+          },
+          {
+            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'), 'AzureBastionSubnet')]",
+            "name": "AzureBastionSubnet",
+            "properties": {
+              "addressPrefix": "10.248.6.0/26",
+              "defaultOutboundAccess": true,
+              "delegations": [],
+              "privateEndpointNetworkPolicies": "Disabled",
+              "privateLinkServiceNetworkPolicies": "Enabled",
+              "serviceEndpoints": []
+            },
+            "type": "Microsoft.Network/virtualNetworks/subnets"
+          }
+        ],
+        "virtualNetworkPeerings": []
+      },
+      "tags": {
+        "application_criticality": "",
+        "application_name": "",
+        "application_owner": "",
+        "backup_policy": "",
+        "bussines_criticality": "",
+        "company_charge": "",
+        "data_classification": "",
+        "disaster_recovery": "",
+        "maintenance_windows": "",
+        "service_charge": "",
+        "support_team": "",
+        "update_manager": ""
+      },
+      "type": "Microsoft.Network/virtualNetworks"
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'))]"
+      ],
+      "name": "[concat(parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'), '/AzureBastionSubnet')]",
+      "properties": {
+        "addressPrefix": "10.248.6.0/26",
+        "defaultOutboundAccess": true,
+        "delegations": [],
+        "privateEndpointNetworkPolicies": "Disabled",
+        "privateLinkServiceNetworkPolicies": "Enabled",
+        "serviceEndpoints": []
+      },
+      "type": "Microsoft.Network/virtualNetworks/subnets"
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'))]"
+      ],
+      "name": "[concat(parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'), '/snet-hub-lz-pro-con-forti-mng-01')]",
+      "properties": {
+        "addressPrefix": "10.248.4.160/27",
+        "defaultOutboundAccess": true,
+        "delegations": [],
+        "networkSecurityGroup": {
+          "id": "[parameters('networkSecurityGroups_nsg_spc1_pro_console_01_externalid')]"
+        },
+        "privateEndpointNetworkPolicies": "Disabled",
+        "privateLinkServiceNetworkPolicies": "Enabled",
+        "serviceEndpoints": []
+      },
+      "type": "Microsoft.Network/virtualNetworks/subnets"
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'))]"
+      ],
+      "name": "[concat(parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'), '/snet-hub-lz-pro-con-netskope-01')]",
+      "properties": {
+        "addressPrefix": "10.248.4.192/27",
+        "defaultOutboundAccess": true,
+        "delegations": [],
+        "networkSecurityGroup": {
+          "id": "[parameters('networkSecurityGroups_nsg_spc1_pro_console_01_externalid')]"
+        },
+        "privateEndpointNetworkPolicies": "Disabled",
+        "privateLinkServiceNetworkPolicies": "Enabled",
+        "serviceEndpoints": []
+      },
+      "type": "Microsoft.Network/virtualNetworks/subnets"
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'))]"
+      ],
+      "name": "[concat(parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'), '/snet-hub-lz-pro-con-paloalto-mng-01')]",
+      "properties": {
+        "addressPrefix": "10.248.4.32/27",
+        "defaultOutboundAccess": true,
+        "delegations": [],
+        "privateEndpointNetworkPolicies": "Disabled",
+        "privateLinkServiceNetworkPolicies": "Enabled",
+        "serviceEndpoints": []
+      },
+      "type": "Microsoft.Network/virtualNetworks/subnets"
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'))]"
+      ],
+      "name": "[concat(parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'), '/snet-hub-lz-pro-con-paloalto-trust-01')]",
+      "properties": {
+        "addressPrefix": "10.248.4.96/27",
+        "defaultOutboundAccess": true,
+        "delegations": [],
+        "privateEndpointNetworkPolicies": "Disabled",
+        "privateLinkServiceNetworkPolicies": "Enabled",
+        "serviceEndpoints": []
+      },
+      "type": "Microsoft.Network/virtualNetworks/subnets"
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'))]"
+      ],
+      "name": "[concat(parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'), '/snet-hub-lz-pro-con-paloalto-untrust-01')]",
+      "properties": {
+        "addressPrefix": "10.248.4.64/27",
+        "defaultOutboundAccess": true,
+        "delegations": [],
+        "privateEndpointNetworkPolicies": "Disabled",
+        "privateLinkServiceNetworkPolicies": "Enabled",
+        "serviceEndpoints": []
+      },
+      "type": "Microsoft.Network/virtualNetworks/subnets"
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'))]"
+      ],
+      "name": "[concat(parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'), '/snet-hub-lz-pro-con-pep-01')]",
+      "properties": {
+        "addressPrefix": "10.248.4.128/27",
+        "defaultOutboundAccess": true,
+        "delegations": [],
+        "privateEndpointNetworkPolicies": "Disabled",
+        "privateLinkServiceNetworkPolicies": "Enabled",
+        "serviceEndpoints": []
+      },
+      "type": "Microsoft.Network/virtualNetworks/subnets"
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'), 'snet-hub-lz-pro-con-apw-01')]",
+        "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_pip_hub_lz_pro_spc1_apg_01_name'))]"
+      ],
+      "location": "spaincentral",
+      "name": "[parameters('applicationGateways_apg_hub_lz_pro_spc1_net_01_name')]",
+      "properties": {
+        "backendAddressPools": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/applicationGateways', parameters('applicationGateways_apg_hub_lz_pro_spc1_net_01_name')), '/backendAddressPools/backendAddressPool')]",
+            "name": "backendAddressPool",
+            "properties": {
+              "backendAddresses": [
+                {
+                  "ipAddress": "10.248.4.69"
+                },
+                {
+                  "ipAddress": "10.248.4.68"
+                }
+              ]
+            }
+          }
+        ],
+        "backendHttpSettingsCollection": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/applicationGateways', parameters('applicationGateways_apg_hub_lz_pro_spc1_net_01_name')), '/backendHttpSettingsCollection/httpSettings')]",
+            "name": "httpSettings",
+            "properties": {
+              "cookieBasedAffinity": "Disabled",
+              "path": "/path1/",
+              "pickHostNameFromBackendAddress": false,
+              "port": 80,
+              "protocol": "Http",
+              "requestTimeout": 60
+            }
+          }
+        ],
+        "backendSettingsCollection": [],
+        "customErrorConfigurations": [],
+        "enableHttp2": false,
+        "frontendIPConfigurations": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/applicationGateways', parameters('applicationGateways_apg_hub_lz_pro_spc1_net_01_name')), '/frontendIPConfigurations/frontendIPConfig')]",
+            "name": "frontendIPConfig",
+            "properties": {
+              "privateIPAllocationMethod": "Dynamic",
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_pip_hub_lz_pro_spc1_apg_01_name'))]"
+              }
+            }
+          }
+        ],
+        "frontendPorts": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/applicationGateways', parameters('applicationGateways_apg_hub_lz_pro_spc1_net_01_name')), '/frontendPorts/appGatewayFrontendPort')]",
+            "name": "appGatewayFrontendPort",
+            "properties": {
+              "port": 80
+            }
+          }
+        ],
+        "gatewayIPConfigurations": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/applicationGateways', parameters('applicationGateways_apg_hub_lz_pro_spc1_net_01_name')), '/gatewayIPConfigurations/my-gateway-ip-configuration')]",
+            "name": "my-gateway-ip-configuration",
+            "properties": {
+              "subnet": {
+                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'), 'snet-hub-lz-pro-con-apw-01')]"
+              }
+            }
+          }
+        ],
+        "httpListeners": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/applicationGateways', parameters('applicationGateways_apg_hub_lz_pro_spc1_net_01_name')), '/httpListeners/listener')]",
+            "name": "listener",
+            "properties": {
+              "customErrorConfigurations": [],
+              "frontendIPConfiguration": {
+                "id": "[concat(resourceId('Microsoft.Network/applicationGateways', parameters('applicationGateways_apg_hub_lz_pro_spc1_net_01_name')), '/frontendIPConfigurations/frontendIPConfig')]"
+              },
+              "frontendPort": {
+                "id": "[concat(resourceId('Microsoft.Network/applicationGateways', parameters('applicationGateways_apg_hub_lz_pro_spc1_net_01_name')), '/frontendPorts/appGatewayFrontendPort')]"
+              },
+              "hostNames": [],
+              "protocol": "Http",
+              "requireServerNameIndication": false
+            }
+          }
+        ],
+        "listeners": [],
+        "loadDistributionPolicies": [],
+        "privateLinkConfigurations": [],
+        "probes": [],
+        "redirectConfigurations": [],
+        "requestRoutingRules": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/applicationGateways', parameters('applicationGateways_apg_hub_lz_pro_spc1_net_01_name')), '/requestRoutingRules/requestRoutingRule')]",
+            "name": "requestRoutingRule",
+            "properties": {
+              "backendAddressPool": {
+                "id": "[concat(resourceId('Microsoft.Network/applicationGateways', parameters('applicationGateways_apg_hub_lz_pro_spc1_net_01_name')), '/backendAddressPools/backendAddressPool')]"
+              },
+              "backendHttpSettings": {
+                "id": "[concat(resourceId('Microsoft.Network/applicationGateways', parameters('applicationGateways_apg_hub_lz_pro_spc1_net_01_name')), '/backendHttpSettingsCollection/httpSettings')]"
+              },
+              "httpListener": {
+                "id": "[concat(resourceId('Microsoft.Network/applicationGateways', parameters('applicationGateways_apg_hub_lz_pro_spc1_net_01_name')), '/httpListeners/listener')]"
+              },
+              "priority": 1,
+              "ruleType": "Basic"
+            }
+          }
+        ],
+        "rewriteRuleSets": [],
+        "routingRules": [],
+        "sku": {
+          "capacity": 2,
+          "family": "Generation_1",
+          "name": "Standard_v2",
+          "tier": "Standard_v2"
+        },
+        "sslCertificates": [],
+        "sslPolicy": {
+          "policyName": "AppGwSslPolicy20220101",
+          "policyType": "Predefined"
+        },
+        "sslProfiles": [],
+        "trustedClientCertificates": [],
+        "trustedRootCertificates": [],
+        "urlPathMaps": []
+      },
+      "type": "Microsoft.Network/applicationGateways"
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_kv_hub_lz_pro_spc1_01_name'))]",
+        "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'), 'snet-hub-lz-pro-con-pep-01')]"
+      ],
+      "location": "spaincentral",
+      "name": "[parameters('privateEndpoints_pe_kv_hub_lz_pro_spc1_01_name')]",
+      "properties": {
+        "customDnsConfigs": [],
+        "ipConfigurations": [],
+        "manualPrivateLinkServiceConnections": [],
+        "privateLinkServiceConnections": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/privateEndpoints', parameters('privateEndpoints_pe_kv_hub_lz_pro_spc1_01_name')), '/privateLinkServiceConnections/psc-kv-hub-lz-pro-spc1-01')]",
+            "name": "psc-kv-hub-lz-pro-spc1-01",
+            "properties": {
+              "groupIds": [
+                "vault"
+              ],
+              "privateLinkServiceConnectionState": {
+                "actionsRequired": "None",
+                "status": "Approved"
+              },
+              "privateLinkServiceId": "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_kv_hub_lz_pro_spc1_01_name'))]"
+            }
+          }
+        ],
+        "subnet": {
+          "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'), 'snet-hub-lz-pro-con-pep-01')]"
+        }
+      },
+      "tags": {
+        "application_criticality": "",
+        "application_name": "",
+        "application_owner": "",
+        "backup_policy": "",
+        "bussines_criticality": "",
+        "company_charge": "",
+        "data_classification": "",
+        "disaster_recovery": "",
+        "maintenance_windows": "",
+        "service_charge": "",
+        "support_team": "",
+        "update_manager": ""
+      },
+      "type": "Microsoft.Network/privateEndpoints"
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'))]",
+        "[resourceId('Microsoft.Network/applicationGateways', parameters('applicationGateways_apg_hub_lz_pro_spc1_net_01_name'))]"
+      ],
+      "name": "[concat(parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_name'), '/snet-hub-lz-pro-con-apw-01')]",
+      "properties": {
+        "addressPrefix": "10.248.5.0/25",
+        "applicationGatewayIPConfigurations": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/applicationGateways', parameters('applicationGateways_apg_hub_lz_pro_spc1_net_01_name')), '/gatewayIPConfigurations/my-gateway-ip-configuration')]"
+          }
+        ],
+        "defaultOutboundAccess": true,
+        "delegations": [],
+        "privateEndpointNetworkPolicies": "Disabled",
+        "privateLinkServiceNetworkPolicies": "Enabled",
+        "serviceEndpoints": []
+      },
+      "type": "Microsoft.Network/virtualNetworks/subnets"
+    }
+  ],
+  "variables": {}
+}

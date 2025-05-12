@@ -1,0 +1,669 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "networkInterfaces_vm_hub_lz_pro_spc1_fortimanager_01_mgmt_name": {
+      "defaultValue": "vm-hub-lz-pro-spc1-fortimanager-01-mgmt",
+      "type": "String"
+    },
+    "networkInterfaces_vm_hub_lz_pro_spc1_fw_01_mg_name": {
+      "defaultValue": "vm-hub-lz-pro-spc1-fw-01-mg",
+      "type": "String"
+    },
+    "networkInterfaces_vm_hub_lz_pro_spc1_fw_01_trust_name": {
+      "defaultValue": "vm-hub-lz-pro-spc1-fw-01-trust",
+      "type": "String"
+    },
+    "networkInterfaces_vm_hub_lz_pro_spc1_fw_01_untrust_name": {
+      "defaultValue": "vm-hub-lz-pro-spc1-fw-01-untrust",
+      "type": "String"
+    },
+    "networkInterfaces_vm_hub_lz_pro_spc1_fw_02_mg_name": {
+      "defaultValue": "vm-hub-lz-pro-spc1-fw-02-mg",
+      "type": "String"
+    },
+    "networkInterfaces_vm_hub_lz_pro_spc1_fw_02_trust_name": {
+      "defaultValue": "vm-hub-lz-pro-spc1-fw-02-trust",
+      "type": "String"
+    },
+    "networkInterfaces_vm_hub_lz_pro_spc1_fw_02_untrust_name": {
+      "defaultValue": "vm-hub-lz-pro-spc1-fw-02-untrust",
+      "type": "String"
+    },
+    "networkSecurityGroups_nsg_spc1_pro_console_01_name": {
+      "defaultValue": "nsg-spc1-pro-console-01",
+      "type": "String"
+    },
+    "publicIPAddresses_pip_hub_lz_pro_spc1_forti_01_externalid": {
+      "defaultValue": "/subscriptions/300f5304-aee3-4ad6-9916-8c62d857f525/resourceGroups/rg-hub-lz-pro-spc1-con-net-01/providers/Microsoft.Network/publicIPAddresses/pip-hub-lz-pro-spc1-forti-01",
+      "type": "String"
+    },
+    "virtualMachines_vm_hub_lz_pro_spc1_fortimanager_01_name": {
+      "defaultValue": "vm-hub-lz-pro-spc1-fortimanager-01",
+      "type": "String"
+    },
+    "virtualMachines_vm_hub_lz_pro_spc1_fw_01_name": {
+      "defaultValue": "vm-hub-lz-pro-spc1-fw-01",
+      "type": "String"
+    },
+    "virtualMachines_vm_hub_lz_pro_spc1_fw_02_name": {
+      "defaultValue": "vm-hub-lz-pro-spc1-fw-02",
+      "type": "String"
+    },
+    "virtualNetworks_vnet_hub_lz_pro_spc1_con_01_externalid": {
+      "defaultValue": "/subscriptions/300f5304-aee3-4ad6-9916-8c62d857f525/resourceGroups/rg-hub-lz-pro-spc1-con-net-01/providers/Microsoft.Network/virtualNetworks/vnet-hub-lz-pro-spc1-con-01",
+      "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2024-05-01",
+      "kind": "Regular",
+      "location": "spaincentral",
+      "name": "[parameters('networkInterfaces_vm_hub_lz_pro_spc1_fortimanager_01_mgmt_name')]",
+      "properties": {
+        "auxiliaryMode": "None",
+        "auxiliarySku": "None",
+        "disableTcpStateTracking": false,
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableAcceleratedNetworking": false,
+        "enableIPForwarding": true,
+        "ipConfigurations": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_hub_lz_pro_spc1_fortimanager_01_mgmt_name')), '/ipConfigurations/mgmt')]",
+            "name": "mgmt",
+            "properties": {
+              "primary": true,
+              "privateIPAddress": "10.248.4.165",
+              "privateIPAddressVersion": "IPv4",
+              "privateIPAllocationMethod": "Static",
+              "publicIPAddress": {
+                "id": "[parameters('publicIPAddresses_pip_hub_lz_pro_spc1_forti_01_externalid')]"
+              },
+              "subnet": {
+                "id": "[concat(parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_externalid'), '/subnets/snet-hub-lz-pro-con-forti-mng-01')]"
+              }
+            },
+            "type": "Microsoft.Network/networkInterfaces/ipConfigurations"
+          }
+        ],
+        "nicType": "Standard"
+      },
+      "tags": {
+        "application_criticality": "",
+        "application_name": "",
+        "application_owner": "",
+        "backup_policy": "",
+        "bussines_criticality": "",
+        "company_charge": "",
+        "data_classification": "",
+        "disaster_recovery": "",
+        "maintenance_windows": "",
+        "service_charge": "",
+        "support_team": "",
+        "update_manager": ""
+      },
+      "type": "Microsoft.Network/networkInterfaces"
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "kind": "Regular",
+      "location": "spaincentral",
+      "name": "[parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_01_mg_name')]",
+      "properties": {
+        "auxiliaryMode": "None",
+        "auxiliarySku": "None",
+        "disableTcpStateTracking": false,
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableAcceleratedNetworking": false,
+        "enableIPForwarding": false,
+        "ipConfigurations": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_01_mg_name')), '/ipConfigurations/internal')]",
+            "name": "internal",
+            "properties": {
+              "primary": true,
+              "privateIPAddress": "10.248.4.36",
+              "privateIPAddressVersion": "IPv4",
+              "privateIPAllocationMethod": "Dynamic",
+              "subnet": {
+                "id": "[concat(parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_externalid'), '/subnets/snet-hub-lz-pro-con-paloalto-mng-01')]"
+              }
+            },
+            "type": "Microsoft.Network/networkInterfaces/ipConfigurations"
+          }
+        ],
+        "nicType": "Standard"
+      },
+      "type": "Microsoft.Network/networkInterfaces"
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "kind": "Regular",
+      "location": "spaincentral",
+      "name": "[parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_01_trust_name')]",
+      "properties": {
+        "auxiliaryMode": "None",
+        "auxiliarySku": "None",
+        "disableTcpStateTracking": false,
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableAcceleratedNetworking": false,
+        "enableIPForwarding": false,
+        "ipConfigurations": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_01_trust_name')), '/ipConfigurations/internal')]",
+            "name": "internal",
+            "properties": {
+              "primary": true,
+              "privateIPAddress": "10.248.4.100",
+              "privateIPAddressVersion": "IPv4",
+              "privateIPAllocationMethod": "Dynamic",
+              "subnet": {
+                "id": "[concat(parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_externalid'), '/subnets/snet-hub-lz-pro-con-paloalto-trust-01')]"
+              }
+            },
+            "type": "Microsoft.Network/networkInterfaces/ipConfigurations"
+          }
+        ],
+        "nicType": "Standard"
+      },
+      "type": "Microsoft.Network/networkInterfaces"
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "kind": "Regular",
+      "location": "spaincentral",
+      "name": "[parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_01_untrust_name')]",
+      "properties": {
+        "auxiliaryMode": "None",
+        "auxiliarySku": "None",
+        "disableTcpStateTracking": false,
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableAcceleratedNetworking": false,
+        "enableIPForwarding": false,
+        "ipConfigurations": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_01_untrust_name')), '/ipConfigurations/internal')]",
+            "name": "internal",
+            "properties": {
+              "primary": true,
+              "privateIPAddress": "10.248.4.68",
+              "privateIPAddressVersion": "IPv4",
+              "privateIPAllocationMethod": "Dynamic",
+              "subnet": {
+                "id": "[concat(parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_externalid'), '/subnets/snet-hub-lz-pro-con-paloalto-untrust-01')]"
+              }
+            },
+            "type": "Microsoft.Network/networkInterfaces/ipConfigurations"
+          }
+        ],
+        "nicType": "Standard"
+      },
+      "type": "Microsoft.Network/networkInterfaces"
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "kind": "Regular",
+      "location": "spaincentral",
+      "name": "[parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_02_mg_name')]",
+      "properties": {
+        "auxiliaryMode": "None",
+        "auxiliarySku": "None",
+        "disableTcpStateTracking": false,
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableAcceleratedNetworking": false,
+        "enableIPForwarding": false,
+        "ipConfigurations": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_02_mg_name')), '/ipConfigurations/internal')]",
+            "name": "internal",
+            "properties": {
+              "primary": true,
+              "privateIPAddress": "10.248.4.37",
+              "privateIPAddressVersion": "IPv4",
+              "privateIPAllocationMethod": "Dynamic",
+              "subnet": {
+                "id": "[concat(parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_externalid'), '/subnets/snet-hub-lz-pro-con-paloalto-mng-01')]"
+              }
+            },
+            "type": "Microsoft.Network/networkInterfaces/ipConfigurations"
+          }
+        ],
+        "nicType": "Standard"
+      },
+      "type": "Microsoft.Network/networkInterfaces"
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "kind": "Regular",
+      "location": "spaincentral",
+      "name": "[parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_02_trust_name')]",
+      "properties": {
+        "auxiliaryMode": "None",
+        "auxiliarySku": "None",
+        "disableTcpStateTracking": false,
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableAcceleratedNetworking": false,
+        "enableIPForwarding": false,
+        "ipConfigurations": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_02_trust_name')), '/ipConfigurations/internal')]",
+            "name": "internal",
+            "properties": {
+              "primary": true,
+              "privateIPAddress": "10.248.4.101",
+              "privateIPAddressVersion": "IPv4",
+              "privateIPAllocationMethod": "Dynamic",
+              "subnet": {
+                "id": "[concat(parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_externalid'), '/subnets/snet-hub-lz-pro-con-paloalto-trust-01')]"
+              }
+            },
+            "type": "Microsoft.Network/networkInterfaces/ipConfigurations"
+          }
+        ],
+        "nicType": "Standard"
+      },
+      "type": "Microsoft.Network/networkInterfaces"
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "kind": "Regular",
+      "location": "spaincentral",
+      "name": "[parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_02_untrust_name')]",
+      "properties": {
+        "auxiliaryMode": "None",
+        "auxiliarySku": "None",
+        "disableTcpStateTracking": false,
+        "dnsSettings": {
+          "dnsServers": []
+        },
+        "enableAcceleratedNetworking": false,
+        "enableIPForwarding": false,
+        "ipConfigurations": [
+          {
+            "id": "[concat(resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_02_untrust_name')), '/ipConfigurations/internal')]",
+            "name": "internal",
+            "properties": {
+              "primary": true,
+              "privateIPAddress": "10.248.4.69",
+              "privateIPAddressVersion": "IPv4",
+              "privateIPAllocationMethod": "Dynamic",
+              "subnet": {
+                "id": "[concat(parameters('virtualNetworks_vnet_hub_lz_pro_spc1_con_01_externalid'), '/subnets/snet-hub-lz-pro-con-paloalto-untrust-01')]"
+              }
+            },
+            "type": "Microsoft.Network/networkInterfaces/ipConfigurations"
+          }
+        ],
+        "nicType": "Standard"
+      },
+      "type": "Microsoft.Network/networkInterfaces"
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "location": "spaincentral",
+      "name": "[parameters('networkSecurityGroups_nsg_spc1_pro_console_01_name')]",
+      "properties": {
+        "securityRules": [
+          {
+            "id": "[resourceId('Microsoft.Network/networkSecurityGroups/securityRules', parameters('networkSecurityGroups_nsg_spc1_pro_console_01_name'), 'AllowManagementconsole')]",
+            "name": "AllowManagementconsole",
+            "properties": {
+              "access": "Allow",
+              "destinationAddressPrefix": "*",
+              "destinationAddressPrefixes": [],
+              "destinationPortRanges": [
+                "22",
+                "80",
+                "443"
+              ],
+              "direction": "Inbound",
+              "priority": 100,
+              "protocol": "Tcp",
+              "sourceAddressPrefix": "*",
+              "sourceAddressPrefixes": [],
+              "sourcePortRange": "*",
+              "sourcePortRanges": []
+            },
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+          }
+        ]
+      },
+      "tags": {
+        "application_criticality": "",
+        "application_name": "",
+        "application_owner": "",
+        "backup_policy": "",
+        "bussines_criticality": "",
+        "company_charge": "",
+        "data_classification": "",
+        "disaster_recovery": "",
+        "maintenance_windows": "",
+        "service_charge": "",
+        "support_team": "",
+        "update_manager": ""
+      },
+      "type": "Microsoft.Network/networkSecurityGroups"
+    },
+    {
+      "apiVersion": "2024-11-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_hub_lz_pro_spc1_fortimanager_01_mgmt_name'))]"
+      ],
+      "location": "spaincentral",
+      "name": "[parameters('virtualMachines_vm_hub_lz_pro_spc1_fortimanager_01_name')]",
+      "plan": {
+        "name": "fortinet-fortimanager",
+        "product": "fortinet-fortimanager",
+        "publisher": "fortinet"
+      },
+      "properties": {
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": false
+          }
+        },
+        "extensionsTimeBudget": "PT1H30M",
+        "hardwareProfile": {
+          "vmSize": "Standard_D4s_v3"
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_hub_lz_pro_spc1_fortimanager_01_mgmt_name'))]",
+              "properties": {
+                "primary": true
+              }
+            }
+          ]
+        },
+        "osProfile": {
+          "adminUsername": "AdminF0rti01",
+          "allowExtensionOperations": true,
+          "computerName": "activefgt",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": false,
+            "enableVMAgentPlatformUpdates": false,
+            "patchSettings": {
+              "assessmentMode": "ImageDefault",
+              "patchMode": "ImageDefault"
+            },
+            "provisionVMAgent": true,
+            "ssh": {
+              "publicKeys": []
+            }
+          },
+          "requireGuestProvisionSignal": true,
+          "secrets": []
+        },
+        "priority": "Regular",
+        "storageProfile": {
+          "dataDisks": [],
+          "imageReference": {
+            "offer": "fortinet-fortimanager",
+            "publisher": "fortinet",
+            "sku": "fortinet-fortimanager",
+            "version": "7.0.12"
+          },
+          "osDisk": {
+            "caching": "ReadWrite",
+            "createOption": "FromImage",
+            "deleteOption": "Detach",
+            "managedDisk": {
+              "id": "[resourceId('Microsoft.Compute/disks', 'vm-hub-lz-pro-spc1-forti-01_Disk')]"
+            },
+            "name": "vm-hub-lz-pro-spc1-forti-01_Disk",
+            "osType": "Linux",
+            "writeAcceleratorEnabled": false
+          }
+        }
+      },
+      "tags": {
+        "application_criticality": "",
+        "application_name": "",
+        "application_owner": "",
+        "backup_policy": "",
+        "bussines_criticality": "",
+        "company_charge": "",
+        "data_classification": "",
+        "disaster_recovery": "",
+        "maintenance_windows": "",
+        "service_charge": "",
+        "support_team": "",
+        "update_manager": ""
+      },
+      "type": "Microsoft.Compute/virtualMachines",
+      "zones": [
+        "2"
+      ]
+    },
+    {
+      "apiVersion": "2024-05-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_nsg_spc1_pro_console_01_name'))]"
+      ],
+      "name": "[concat(parameters('networkSecurityGroups_nsg_spc1_pro_console_01_name'), '/AllowManagementconsole')]",
+      "properties": {
+        "access": "Allow",
+        "destinationAddressPrefix": "*",
+        "destinationAddressPrefixes": [],
+        "destinationPortRanges": [
+          "22",
+          "80",
+          "443"
+        ],
+        "direction": "Inbound",
+        "priority": 100,
+        "protocol": "Tcp",
+        "sourceAddressPrefix": "*",
+        "sourceAddressPrefixes": [],
+        "sourcePortRange": "*",
+        "sourcePortRanges": []
+      },
+      "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+    },
+    {
+      "apiVersion": "2024-11-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_01_untrust_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_01_trust_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_01_mg_name'))]"
+      ],
+      "location": "spaincentral",
+      "name": "[parameters('virtualMachines_vm_hub_lz_pro_spc1_fw_01_name')]",
+      "plan": {
+        "name": "byol",
+        "product": "vmseries-flex",
+        "publisher": "paloaltonetworks"
+      },
+      "properties": {
+        "hardwareProfile": {
+          "vmSize": "Standard_DS3_v2"
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_01_untrust_name'))]",
+              "properties": {
+                "primary": false
+              }
+            },
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_01_trust_name'))]",
+              "properties": {
+                "primary": false
+              }
+            },
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_01_mg_name'))]",
+              "properties": {
+                "primary": true
+              }
+            }
+          ]
+        },
+        "osProfile": {
+          "adminUsername": "UserAdminIlunion$",
+          "allowExtensionOperations": true,
+          "computerName": "[parameters('virtualMachines_vm_hub_lz_pro_spc1_fw_01_name')]",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": false,
+            "patchSettings": {
+              "assessmentMode": "ImageDefault",
+              "patchMode": "ImageDefault"
+            },
+            "provisionVMAgent": true
+          },
+          "requireGuestProvisionSignal": true,
+          "secrets": []
+        },
+        "storageProfile": {
+          "dataDisks": [],
+          "imageReference": {
+            "offer": "vmseries-flex",
+            "publisher": "paloaltonetworks",
+            "sku": "byol",
+            "version": "11.1.407"
+          },
+          "osDisk": {
+            "caching": "ReadWrite",
+            "createOption": "FromImage",
+            "deleteOption": "Detach",
+            "managedDisk": {
+              "id": "[resourceId('Microsoft.Compute/disks', concat(parameters('virtualMachines_vm_hub_lz_pro_spc1_fw_01_name'), '-disk'))]"
+            },
+            "name": "[concat(parameters('virtualMachines_vm_hub_lz_pro_spc1_fw_01_name'), '-disk')]",
+            "osType": "Linux",
+            "writeAcceleratorEnabled": false
+          }
+        }
+      },
+      "tags": {
+        "application_criticality": "",
+        "application_name": "",
+        "application_owner": "",
+        "backup_policy": "",
+        "bussines_criticality": "",
+        "company_charge": "",
+        "data_classification": "",
+        "disaster_recovery": "",
+        "maintenance_windows": "",
+        "service_charge": "",
+        "support_team": "",
+        "update_manager": ""
+      },
+      "type": "Microsoft.Compute/virtualMachines",
+      "zones": [
+        "2"
+      ]
+    },
+    {
+      "apiVersion": "2024-11-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_02_untrust_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_02_trust_name'))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_02_mg_name'))]"
+      ],
+      "location": "spaincentral",
+      "name": "[parameters('virtualMachines_vm_hub_lz_pro_spc1_fw_02_name')]",
+      "plan": {
+        "name": "byol",
+        "product": "vmseries-flex",
+        "publisher": "paloaltonetworks"
+      },
+      "properties": {
+        "hardwareProfile": {
+          "vmSize": "Standard_DS3_v2"
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_02_untrust_name'))]",
+              "properties": {
+                "primary": false
+              }
+            },
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_02_trust_name'))]",
+              "properties": {
+                "primary": false
+              }
+            },
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_vm_hub_lz_pro_spc1_fw_02_mg_name'))]",
+              "properties": {
+                "primary": true
+              }
+            }
+          ]
+        },
+        "osProfile": {
+          "adminUsername": "UserAdminIlunion$",
+          "allowExtensionOperations": true,
+          "computerName": "[parameters('virtualMachines_vm_hub_lz_pro_spc1_fw_02_name')]",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": false,
+            "patchSettings": {
+              "assessmentMode": "ImageDefault",
+              "patchMode": "ImageDefault"
+            },
+            "provisionVMAgent": true
+          },
+          "requireGuestProvisionSignal": true,
+          "secrets": []
+        },
+        "storageProfile": {
+          "dataDisks": [],
+          "imageReference": {
+            "offer": "vmseries-flex",
+            "publisher": "paloaltonetworks",
+            "sku": "byol",
+            "version": "11.1.407"
+          },
+          "osDisk": {
+            "caching": "ReadWrite",
+            "createOption": "FromImage",
+            "deleteOption": "Detach",
+            "managedDisk": {
+              "id": "[resourceId('Microsoft.Compute/disks', concat(parameters('virtualMachines_vm_hub_lz_pro_spc1_fw_02_name'), '-disk'))]"
+            },
+            "name": "[concat(parameters('virtualMachines_vm_hub_lz_pro_spc1_fw_02_name'), '-disk')]",
+            "osType": "Linux",
+            "writeAcceleratorEnabled": false
+          }
+        }
+      },
+      "tags": {
+        "application_criticality": "",
+        "application_name": "",
+        "application_owner": "",
+        "backup_policy": "",
+        "bussines_criticality": "",
+        "company_charge": "",
+        "data_classification": "",
+        "disaster_recovery": "",
+        "maintenance_windows": "",
+        "service_charge": "",
+        "support_team": "",
+        "update_manager": ""
+      },
+      "type": "Microsoft.Compute/virtualMachines",
+      "zones": [
+        "3"
+      ]
+    }
+  ],
+  "variables": {}
+}
