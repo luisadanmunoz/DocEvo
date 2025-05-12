@@ -1,0 +1,246 @@
+
+       _               _
+   ___| |__   ___  ___| | _______   __
+  / __| '_ \ / _ \/ __| |/ / _ \ \ / /
+ | (__| | | |  __/ (__|   < (_) \ V /
+  \___|_| |_|\___|\___|_|\_\___/ \_/
+
+By Prisma Cloud | version: 3.2.417 
+arm scan results:
+
+Passed checks: 11, Failed checks: 7, Skipped checks: 0
+
+Check: CKV_AZURE_189: "Ensure that Azure Key Vault disables public network access"
+	PASSED for resource: Microsoft.KeyVault/vaults.kv-hub-lz-pro-spc1-01
+	File: \rg-hub-lz-pro-spc1-con-net-01_template.json:43-215
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/azr-networking-189
+Check: CKV_AZURE_109: "Ensure that key vault allows firewall rules settings"
+	PASSED for resource: Microsoft.KeyVault/vaults.kv-hub-lz-pro-spc1-01
+	File: \rg-hub-lz-pro-spc1-con-net-01_template.json:43-215
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/ensure-that-key-vault-allows-firewall-rules-settings
+Check: CKV_AZURE_110: "Ensure that key vault enables purge protection"
+	PASSED for resource: Microsoft.KeyVault/vaults.kv-hub-lz-pro-spc1-01
+	File: \rg-hub-lz-pro-spc1-con-net-01_template.json:43-215
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-that-key-vault-enables-purge-protection
+Check: CKV_AZURE_111: "Ensure that key vault enables soft delete"
+	PASSED for resource: Microsoft.KeyVault/vaults.kv-hub-lz-pro-spc1-01
+	File: \rg-hub-lz-pro-spc1-con-net-01_template.json:43-215
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-that-key-vault-enables-soft-delete
+Check: CKV_AZURE_42: "Ensure the key vault is recoverable"
+	PASSED for resource: Microsoft.KeyVault/vaults.kv-hub-lz-pro-spc1-01
+	File: \rg-hub-lz-pro-spc1-con-net-01_template.json:43-215
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-the-key-vault-is-recoverable
+Check: CKV_AZURE_114: "Ensure that key vault secrets have "content_type" set"
+	PASSED for resource: Microsoft.KeyVault/vaults/secrets.[concat(kv-hub-lz-pro-spc1-01, '/vm-hub-lz-pro-spc1-fortimanager-01-pass')]
+	File: \rg-hub-lz-pro-spc1-con-net-01_template.json:308-336
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-that-key-vault-secrets-have-content-type-set
+Check: CKV_AZURE_114: "Ensure that key vault secrets have "content_type" set"
+	PASSED for resource: Microsoft.KeyVault/vaults/secrets.[concat(kv-hub-lz-pro-spc1-01, '/vm-hub-lz-pro-spc1-fw-01-pass')]
+	File: \rg-hub-lz-pro-spc1-con-net-01_template.json:337-365
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-that-key-vault-secrets-have-content-type-set
+Check: CKV_AZURE_114: "Ensure that key vault secrets have "content_type" set"
+	PASSED for resource: Microsoft.KeyVault/vaults/secrets.[concat(kv-hub-lz-pro-spc1-01, '/vm-hub-lz-pro-spc1-fw-02-pass')]
+	File: \rg-hub-lz-pro-spc1-con-net-01_template.json:366-394
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-that-key-vault-secrets-have-content-type-set
+Check: CKV_AZURE_114: "Ensure that key vault secrets have "content_type" set"
+	PASSED for resource: Microsoft.KeyVault/vaults/secrets.[concat(kv-hub-lz-pro-spc1-01, '/vm-hub-lz-pro-spc1-jumhost-01-pass')]
+	File: \rg-hub-lz-pro-spc1-con-net-01_template.json:395-423
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-that-key-vault-secrets-have-content-type-set
+Check: CKV_AZURE_114: "Ensure that key vault secrets have "content_type" set"
+	PASSED for resource: Microsoft.KeyVault/vaults/secrets.[concat(kv-hub-lz-pro-spc1-01, '/vm-hub-lz-pro-spc1-netskope-01-pass')]
+	File: \rg-hub-lz-pro-spc1-con-net-01_template.json:424-452
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-that-key-vault-secrets-have-content-type-set
+Check: CKV_AZURE_182: "Ensure that VNET has at least 2 connected DNS Endpoints"
+	PASSED for resource: Microsoft.Network/virtualNetworks.vnet-hub-lz-pro-spc1-con-01
+	File: \rg-hub-lz-pro-spc1-con-net-01_template.json:471-623
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/azr-networking-182
+Check: CKV_AZURE_41: "Ensure that the expiration date is set on all secrets"
+	FAILED for resource: Microsoft.KeyVault/vaults/secrets.[concat(kv-hub-lz-pro-spc1-01, '/vm-hub-lz-pro-spc1-fortimanager-01-pass')]
+	File: \rg-hub-lz-pro-spc1-con-net-01_template.json:308-336
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-secrets-policies/set-an-expiration-date-on-all-secrets
+
+		308 |     {
+		309 |       "apiVersion": "2024-12-01-preview",
+		310 |       "dependsOn": [
+		311 |         "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_kv_hub_lz_pro_spc1_01_name'))]"
+		312 |       ],
+		313 |       "location": "spaincentral",
+		314 |       "name": "[concat(parameters('vaults_kv_hub_lz_pro_spc1_01_name'), '/vm-hub-lz-pro-spc1-fortimanager-01-pass')]",
+		315 |       "properties": {
+		316 |         "attributes": {
+		317 |           "enabled": true
+		318 |         },
+		319 |         "contentType": "vm-hub-lz-pro-spc1-fortimanager-01-pass"
+		320 |       },
+		321 |       "tags": {
+		322 |         "application_criticality": "",
+		323 |         "application_name": "",
+		324 |         "application_owner": "",
+		325 |         "backup_policy": "",
+		326 |         "bussines_criticality": "",
+		327 |         "company_charge": "",
+		328 |         "data_classification": "",
+		329 |         "disaster_recovery": "",
+		330 |         "maintenance_windows": "",
+		331 |         "service_charge": "",
+		332 |         "support_team": "",
+		333 |         "update_manager": ""
+		334 |       },
+		335 |       "type": "Microsoft.KeyVault/vaults/secrets"
+		336 |     },
+
+Check: CKV_AZURE_41: "Ensure that the expiration date is set on all secrets"
+	FAILED for resource: Microsoft.KeyVault/vaults/secrets.[concat(kv-hub-lz-pro-spc1-01, '/vm-hub-lz-pro-spc1-fw-01-pass')]
+	File: \rg-hub-lz-pro-spc1-con-net-01_template.json:337-365
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-secrets-policies/set-an-expiration-date-on-all-secrets
+
+		337 |     {
+		338 |       "apiVersion": "2024-12-01-preview",
+		339 |       "dependsOn": [
+		340 |         "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_kv_hub_lz_pro_spc1_01_name'))]"
+		341 |       ],
+		342 |       "location": "spaincentral",
+		343 |       "name": "[concat(parameters('vaults_kv_hub_lz_pro_spc1_01_name'), '/vm-hub-lz-pro-spc1-fw-01-pass')]",
+		344 |       "properties": {
+		345 |         "attributes": {
+		346 |           "enabled": true
+		347 |         },
+		348 |         "contentType": "vm-hub-lz-pro-spc1-fw-01-pass"
+		349 |       },
+		350 |       "tags": {
+		351 |         "application_criticality": "",
+		352 |         "application_name": "",
+		353 |         "application_owner": "",
+		354 |         "backup_policy": "",
+		355 |         "bussines_criticality": "",
+		356 |         "company_charge": "",
+		357 |         "data_classification": "",
+		358 |         "disaster_recovery": "",
+		359 |         "maintenance_windows": "",
+		360 |         "service_charge": "",
+		361 |         "support_team": "",
+		362 |         "update_manager": ""
+		363 |       },
+		364 |       "type": "Microsoft.KeyVault/vaults/secrets"
+		365 |     },
+
+Check: CKV_AZURE_41: "Ensure that the expiration date is set on all secrets"
+	FAILED for resource: Microsoft.KeyVault/vaults/secrets.[concat(kv-hub-lz-pro-spc1-01, '/vm-hub-lz-pro-spc1-fw-02-pass')]
+	File: \rg-hub-lz-pro-spc1-con-net-01_template.json:366-394
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-secrets-policies/set-an-expiration-date-on-all-secrets
+
+		366 |     {
+		367 |       "apiVersion": "2024-12-01-preview",
+		368 |       "dependsOn": [
+		369 |         "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_kv_hub_lz_pro_spc1_01_name'))]"
+		370 |       ],
+		371 |       "location": "spaincentral",
+		372 |       "name": "[concat(parameters('vaults_kv_hub_lz_pro_spc1_01_name'), '/vm-hub-lz-pro-spc1-fw-02-pass')]",
+		373 |       "properties": {
+		374 |         "attributes": {
+		375 |           "enabled": true
+		376 |         },
+		377 |         "contentType": "vm-hub-lz-pro-spc1-fw-02-pass"
+		378 |       },
+		379 |       "tags": {
+		380 |         "application_criticality": "",
+		381 |         "application_name": "",
+		382 |         "application_owner": "",
+		383 |         "backup_policy": "",
+		384 |         "bussines_criticality": "",
+		385 |         "company_charge": "",
+		386 |         "data_classification": "",
+		387 |         "disaster_recovery": "",
+		388 |         "maintenance_windows": "",
+		389 |         "service_charge": "",
+		390 |         "support_team": "",
+		391 |         "update_manager": ""
+		392 |       },
+		393 |       "type": "Microsoft.KeyVault/vaults/secrets"
+		394 |     },
+
+Check: CKV_AZURE_41: "Ensure that the expiration date is set on all secrets"
+	FAILED for resource: Microsoft.KeyVault/vaults/secrets.[concat(kv-hub-lz-pro-spc1-01, '/vm-hub-lz-pro-spc1-jumhost-01-pass')]
+	File: \rg-hub-lz-pro-spc1-con-net-01_template.json:395-423
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-secrets-policies/set-an-expiration-date-on-all-secrets
+
+		395 |     {
+		396 |       "apiVersion": "2024-12-01-preview",
+		397 |       "dependsOn": [
+		398 |         "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_kv_hub_lz_pro_spc1_01_name'))]"
+		399 |       ],
+		400 |       "location": "spaincentral",
+		401 |       "name": "[concat(parameters('vaults_kv_hub_lz_pro_spc1_01_name'), '/vm-hub-lz-pro-spc1-jumhost-01-pass')]",
+		402 |       "properties": {
+		403 |         "attributes": {
+		404 |           "enabled": true
+		405 |         },
+		406 |         "contentType": "vm-hub-lz-pro-spc1-jumhost-01-pass"
+		407 |       },
+		408 |       "tags": {
+		409 |         "application_criticality": "",
+		410 |         "application_name": "",
+		411 |         "application_owner": "",
+		412 |         "backup_policy": "",
+		413 |         "bussines_criticality": "",
+		414 |         "company_charge": "",
+		415 |         "data_classification": "",
+		416 |         "disaster_recovery": "",
+		417 |         "maintenance_windows": "",
+		418 |         "service_charge": "",
+		419 |         "support_team": "",
+		420 |         "update_manager": ""
+		421 |       },
+		422 |       "type": "Microsoft.KeyVault/vaults/secrets"
+		423 |     },
+
+Check: CKV_AZURE_41: "Ensure that the expiration date is set on all secrets"
+	FAILED for resource: Microsoft.KeyVault/vaults/secrets.[concat(kv-hub-lz-pro-spc1-01, '/vm-hub-lz-pro-spc1-netskope-01-pass')]
+	File: \rg-hub-lz-pro-spc1-con-net-01_template.json:424-452
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-secrets-policies/set-an-expiration-date-on-all-secrets
+
+		424 |     {
+		425 |       "apiVersion": "2024-12-01-preview",
+		426 |       "dependsOn": [
+		427 |         "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_kv_hub_lz_pro_spc1_01_name'))]"
+		428 |       ],
+		429 |       "location": "spaincentral",
+		430 |       "name": "[concat(parameters('vaults_kv_hub_lz_pro_spc1_01_name'), '/vm-hub-lz-pro-spc1-netskope-01-pass')]",
+		431 |       "properties": {
+		432 |         "attributes": {
+		433 |           "enabled": true
+		434 |         },
+		435 |         "contentType": "vm-hub-lz-pro-spc1-netskope-01-pass"
+		436 |       },
+		437 |       "tags": {
+		438 |         "application_criticality": "",
+		439 |         "application_name": "",
+		440 |         "application_owner": "",
+		441 |         "backup_policy": "",
+		442 |         "bussines_criticality": "",
+		443 |         "company_charge": "",
+		444 |         "data_classification": "",
+		445 |         "disaster_recovery": "",
+		446 |         "maintenance_windows": "",
+		447 |         "service_charge": "",
+		448 |         "support_team": "",
+		449 |         "update_manager": ""
+		450 |       },
+		451 |       "type": "Microsoft.KeyVault/vaults/secrets"
+		452 |     },
+
+Check: CKV_AZURE_183: "Ensure that VNET uses local DNS addresses"
+	FAILED for resource: Microsoft.Network/virtualNetworks.vnet-hub-lz-pro-spc1-con-01
+	File: \rg-hub-lz-pro-spc1-con-net-01_template.json:471-623
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/azr-networking-183
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV_AZURE_218: "Ensure Application Gateway defines secure protocols for in transit communication"
+	FAILED for resource: Microsoft.Network/applicationGateways.apg-hub-lz-pro-spc1-net-01
+	File: \rg-hub-lz-pro-spc1-con-net-01_template.json:742-877
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/bc-azure-218
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+
+
+Wrote output in SARIF format to the file 'results.sarif'
